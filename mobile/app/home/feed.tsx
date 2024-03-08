@@ -7,8 +7,8 @@ import Layout from "@gno/components/layout";
 import { Post } from "@gno/types";
 import { FlatList } from "react-native-gesture-handler";
 import useScrollToTop from "@gno/components/utils/useScrollToTopWithOffset";
-import EmptyFeedList from "@gno/components/feed/empty-feed-list";
-import { Tweet } from "@gno/components/feed/tweet";
+import EmptyFeedList from "@gno/components/list/feed/empty-feed-list";
+import { Tweet } from "@gno/components/list/feed/tweet";
 import Button from "@gno/components/button";
 
 export default function Page() {

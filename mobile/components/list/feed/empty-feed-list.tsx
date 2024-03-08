@@ -1,5 +1,5 @@
 import { StyleSheet, View } from "react-native";
-import Text from "../text";
+import Text from "../../text";
 
 function EmptyFeedList() {
   return (

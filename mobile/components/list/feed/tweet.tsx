@@ -1,7 +1,7 @@
 import React from "react";
 import { Image, Pressable, View } from "react-native";
 import { useRouter, useSegments } from "expo-router";
-import { Post } from "../../types";
+import { Post } from "../../../types";
 import Text from "@gno/components/text";
 
 type Group<T extends string> = `(${T})`;
@@ -43,7 +43,7 @@ export function Tweet({ item }: { item: Post }) {
             </Pressable>
 
             <Text.Body selectable>{item.post}</Text.Body>
-            <View >
+            <View>
               <Text.Caption1 selectable>{item.date}</Text.Caption1>
             </View>
           </View>

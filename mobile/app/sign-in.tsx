@@ -7,10 +7,9 @@ import { useGno } from "@gno/hooks/use-gno";
 import SeedBox from "components/seedbox";
 import { ModalConfirm } from "components/modal";
 import Alert from "components/alert";
-import { loggedIn } from "redux/features/accountSlice";
-import { useAppDispatch } from "@gno/redux";
 import useOnboarding from "@gno/hooks/use-onboarding";
 import { router } from "expo-router";
+import { loggedIn, useAppDispatch } from "@gno/redux";
 
 export default function Page() {
   const [recoveryPhrase, setRecoveryPhrase] = useState("");
@@ -54,6 +53,11 @@ export default function Page() {
       await onboarding.onboard(response.name, response.address);
 
       dispatch(loggedIn(response));
+
+      setRecoveryPhrase("");
+      setName("");
+      setPassword("");
+      setConfirmPassword("");
 
       router.push("/home");
     } catch (error) {

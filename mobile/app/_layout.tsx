@@ -11,12 +11,14 @@ import { Provider } from "react-redux";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { store } from "@gno/redux";
 import { Guard } from "@gno/components/auth/guard";
+import { Canvas } from "@react-three/fiber";
 
 export default function AppLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <Provider store={store}>
+			<Canvas>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Guard>
           <Stack
@@ -28,6 +30,7 @@ export default function AppLayout() {
           />
         </Guard>
       </ThemeProvider>
+			</Canvas>
     </Provider>
   );
 }

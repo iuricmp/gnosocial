@@ -6,12 +6,14 @@ import "react-native-polyfill-globals/auto";
 (Symbol as any).asyncIterator = Symbol.asyncIterator || Symbol.for("Symbol.asyncIterator");
 
 import { Stack } from "expo-router";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { store } from "@gno/redux";
 import { Guard } from "@gno/components/auth/guard";
 import { GnoNativeProvider } from "@gnolang/gnonative";
 import { IndexerProvider } from "@gno/provider/indexer-provider";
+import { View } from "react-native";
+import Text from "@gno/components/text";
 
 const gnoDefaultConfig = {
   remote: process.env.EXPO_PUBLIC_GNO_REMOTE!,
@@ -26,8 +28,9 @@ export default function AppLayout() {
   return (
     <GnoNativeProvider config={gnoDefaultConfig}>
       <IndexerProvider config={indexerDefaultConfig}>
-        <Provider store={store}>
+        <ReduxProvider store={store}>
           <ThemeProvider value={DefaultTheme}>
+						<DsocialProvider
             <Guard>
               <Stack
                 screenOptions={{
@@ -37,8 +40,9 @@ export default function AppLayout() {
                 }}
               />
             </Guard>
+						</DsocialProvider>
           </ThemeProvider>
-        </Provider>
+        </ReduxProvider>
       </IndexerProvider>
     </GnoNativeProvider>
   );
